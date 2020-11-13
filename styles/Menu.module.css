@@ -1,0 +1,30 @@
+.menuStyles {
+    text-align: center;
+    margin-bottom: 4%;
+    width:88%;
+    margin:1% auto;
+}
+.launchMenu
+{
+    background: #fff;
+}
+.yearButton {
+    margin: 2% 3%;
+    color: black;
+    border-radius: 3%;
+    cursor: pointer;
+    width: 40%;
+}
+.otherButton {
+    margin: 2% 3%;
+    color: black;
+    border-radius: 3%;
+    cursor: pointer;
+    padding: 2%;
+}
+.yearButtonUnselected {
+    background-color: #8ee407;
+}
+.yearButtonSelected {
+    background-color:#6faf0b;;
+}

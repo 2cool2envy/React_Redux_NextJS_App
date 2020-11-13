@@ -1,65 +1,85 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import styles from '../styles/Home.module.css';
+import Menu from './Menu';
+import View from './View';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import reducer from '../redux/reducer/index';
+
+const store = createStore(reducer);
+
+function LandingPage() {
+  const [hasError, setErrors] = useState('');
+  const [apidata, setData] = useState([]);
+  const [years, setYear] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let theSet = new Set();
+    apidata.forEach((val) => theSet.add(val.launch_year));
+    setYear([...theSet]);
+  }, [apidata]);
+
+  useEffect(() => {
+    if(hasError.length!==0)
+    {
+      alert('Error while fetching data');
+    }
+  }, [hasError]);
+
+
+  useEffect(() => {
+    setLoading(true);
+    const url = 'https://api.spaceXdata.com/v3/launches?limit=100';
+    async function fetchData() {
+      const res = await fetch(url);
+      res.json()
+        .then(res => {
+          console.log('res', res);
+          setData(res);
+          setLoading(false);
+          dispatch({ type: "API_DATA", payload: res });
+          dispatch({ type: "FILTERED_DATA", payload: res });
+        })
+        .catch(err => setErrors(err));
+    }
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (<h4 style={{ textAlign: 'center',margin:'25%' }}>Loading... </h4>)
+  }
+  else {
+    return (
+      <div className={styles.main}>
+        <h4 className="col-12">
+        <b>  SpaceX Launch Programs</b>
+        </h4>
+        <hr />
+        <div className="row" style={{ width: '97%', margin: '0 auto' }}>
+          <div className="col-lg-3 col-md-3 col-sm-12">
+            <Menu years={years} />
+          </div>
+          <div className="col-lg-9 col-md-9 col-sm-12">
+            <View />
+          </div>
+        </div>
+        <footer className={styles.footer}>
+          Developed By : Mohit Kapoor
+        </footer>
+      </div>
+    )
+  }
+
+}
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+  return (<Provider store={store}>
+    <LandingPage />
+  </Provider>)
 }
