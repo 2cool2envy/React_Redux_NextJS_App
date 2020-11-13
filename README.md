@@ -14,9 +14,13 @@ ReactJS sample application create with integration of Redux, Boostrap UI and [Ne
 
 ### Responisive Design
 
-| Samsung Galaxy S5 (360x640) | Apple iPad pro (1024 x1366) 
-| :---: | :---: | :---: |
-| ![S5](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/S5.png) | ![iPadPro](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/Ipad_Pro.png)  
+- Samsung Galaxy S5 (360x640)
+
+![Quick View](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/s5.gif)
+
+- Apple iPad (768 x 1024)
+
+![Quick View](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/ipad.gif)
 
 
 ### Major files
