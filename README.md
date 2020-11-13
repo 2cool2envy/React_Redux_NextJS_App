@@ -1,6 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+ReactJS sample application create with integration of Redux, Boostrap UI and [Next.js](https://nextjs.org/). This application fetch data from the [SpaceX API](https://docs.spacexdata.com/) and diplay them in resposive view with data filter options.
+
+
+## Featured of Application
+
+- Service Side Rendering with Next.js
+- Resposive Design
+- Minimal code for Redux integration with ReactJS
+- Modular CSS file and imports
+
+
+![Overview linking of major files](http://url/to/img.png)
+
+
+| Attempt | #1 | #2 |
+| :---: | :---: | :---: |
+| Seconds | 301 | 283 |
+
+![Overview linking of major files](http://url/to/img.png)
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 

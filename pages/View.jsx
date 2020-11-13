@@ -32,8 +32,8 @@ function View(props) {
       <div className="row">
         {
           details && details.length > 0 &&
-          details.map((data) => {
-            return (<div style={{ marginBottom: '1%', padding: '2%', boxShadow: "1px 2px 3px solid" }}
+          details.map((data, i) => {
+            return (<div key={i} style={{ marginBottom: '1%', padding: '2%', boxShadow: "1px 2px 3px solid" }}
               className={` ${styles.cards} col-md-3 col-lg-3 col-sm-12`}>
               <div style={{background:'#ffffff',padding: '4%'}}>
                 <div style={{ textAlign: 'center' }}>
@@ -45,7 +45,7 @@ function View(props) {
                 <ul>
                   {
                     data.mission_id && data.mission_id.length > 0 &&
-                    data.mission_id.map((x) => <li>{x}</li>)
+                    data.mission_id.map((x, index) => <li key={index}>{x}</li>)
                   }
                 </ul>
                 <h6><b>Launch Year:</b> {data.launch_year}</h6>

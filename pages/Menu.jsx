@@ -52,7 +52,6 @@ function Menu(props) {
 
   useEffect(() => {
     setLoading(true);
-    console.log('launchFilter at menu.js', launchFilter);
     const info = details.filter((x) => x.launch_success === launchFilter);
     dispatch({ type: "FILTERED_DATA", payload: info });
     setLoading(false);
@@ -73,7 +72,7 @@ function Menu(props) {
             {
               years && years.length > 0 &&
               years.map((val, i) =>
-                <div onClick={() => yearChanged(val)}
+                <div key={i} onClick={() => yearChanged(val)}
                   className={`${styles.yearButton} ${selectedYear === val
                     ? styles.yearButtonSelected : styles.yearButtonUnselected} 
                    `}>

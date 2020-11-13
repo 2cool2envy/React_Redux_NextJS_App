@@ -40,7 +40,6 @@ function LandingPage() {
       const res = await fetch(url);
       res.json()
         .then(res => {
-          console.log('res', res);
           setData(res);
           setLoading(false);
           dispatch({ type: "API_DATA", payload: res });

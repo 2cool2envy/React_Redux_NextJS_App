@@ -6,7 +6,6 @@ const iState = {
 }
 
 const reducer = (state = iState, action) => {
-   console.log('action', action, state)
    switch (action.type) {
       case 'YEAR_SELECTED': return { ...state, year: action.payload }
       case 'API_DATA': return { ...state, data: action.payload }
