@@ -9,14 +9,19 @@ ReactJS sample application create with integration of Redux, Boostrap UI and [Ne
 - Modular CSS file and imports
 
 
-![Overview linking of major files](http://url/to/img.png)
+### Quick Overview
+![Quick View](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/thegif.gif)
 
+### Responisive Design
 
-| Attempt | #1 | #2 |
+| Samsung Galaxy S5 (360x640) | Apple iPad pro (1024 x1366) 
 | :---: | :---: | :---: |
-| Seconds | 301 | 283 |
+| ![S5](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/S5.png) | ![iPadPro](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/Ipad_Pro.png)  
 
-![Overview linking of major files](http://url/to/img.png)
+
+### Major files
+
+![Overview linking of major files](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/overview.png)
 
 ## Getting Started
 
