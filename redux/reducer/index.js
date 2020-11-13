@@ -2,7 +2,7 @@ const iState = {
    year: '',
    data:[],
    filterData:[],
-   isLaunchSuccess:null
+   isLaunchSuccess:''
 }
 
 const reducer = (state = iState, action) => {
