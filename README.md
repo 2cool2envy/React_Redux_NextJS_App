@@ -1,18 +1,20 @@
-ReactJS sample application creates with the integration of Redux, Boostrap UI, and Next.js. This application fetches data from the SpaceX API and display them in responsive view with data filter options.
+ReactJS sample application creates with the integration of Boostrap UI, and Next.js. This application fetches data from the SpaceX API and display them in responsive view with data filter options.
+
+## Demo -  https://sy9uf.sse.codesandbox.io/
+[Application Link](https://sy9uf.sse.codesandbox.io/) 
 
 
 ## Featured of Application
 
 - Service Side Rendering with Next.js
 - Responsive Design
-- Minimal code for Redux integration with ReactJS
 - Modular CSS file and imports
 
 
 ### Quick Overview
 ![Quick View](https://raw.githubusercontent.com/2cool2envy/React_Redux_NextJS_App/master/screenshots/thegif.gif)
 
-### Responsive Design
+### sponsive Design
 
 - Samsung Galaxy S5 (360x640)
 
