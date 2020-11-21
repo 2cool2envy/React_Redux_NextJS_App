@@ -1,29 +1,20 @@
 import { isResSent } from 'next/dist/next-server/lib/utils';
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
 import styles from '../styles/View.module.css';
 
-function View(props) {
-  const rocketData = useSelector(state => state.filterData);
+function View({ record }) {
   const [details, setDetails] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
-
-
-  let setData = (year) => {
-    return new Promise((resolve, reject) => {
-      const info = details.filter((x) => x.launch_year === year);
-      resolve(info);
-    })
-  }
 
   useEffect(() => {
+  //  console.log('new record recibved', record)
     setLoading(true);
-    setDetails(rocketData);
+    setDetails(record);
     setLoading(false);
-  }, [rocketData]);
+  }, [record]);
 
-  if (isLoading && details.length < 1) {
+  if (isLoading) {
     return (<h4 style={{ padding: '30%' }}> Loading..</h4>)
 
   }
@@ -35,7 +26,7 @@ function View(props) {
           details.map((data, i) => {
             return (<div key={i} style={{ marginBottom: '1%', padding: '2%', boxShadow: "1px 2px 3px solid" }}
               className={` ${styles.cards} col-md-3 col-lg-3 col-sm-12`}>
-              <div style={{background:'#ffffff',padding: '4%'}}>
+              <div style={{ background: '#ffffff', padding: '4%' }}>
                 <div style={{ textAlign: 'center' }}>
                   <img className={styles.imageStyles} src={data.links.mission_patch_small} alt='Image' />
                 </div>

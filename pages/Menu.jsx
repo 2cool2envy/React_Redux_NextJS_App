@@ -1,35 +1,45 @@
-import { useSelector, useDispatch } from "react-redux";
 import styles from '../styles/Menu.module.css';
 import React, { useState, useEffect } from 'react';
 
 
 function Menu(props) {
-  let years = props.years;
   const [selectedYear, setYear] = useState('');
+  const [allDetails, setAllDetails] = useState([]);
+  const [years, setYearsData] = useState([]);
   const [launchSuccess, setLaunchSuccess] = useState('');
   const [isEven, setEven] = useState('');
   const [isLoading, setLoading] = useState(true);
 
-  const dispatch = useDispatch();
-  const details = useSelector(state => state.data);
-  const launchFilter = useSelector(state => state.isLaunchSuccess);
+  useEffect(() => {
+   // console.log('update details.props', props.details);
+    if (props.details && props.details.length > 0) {
+      setLoading(true);
+      let theSet = new Set();
+      props.details.forEach((val) => theSet.add(val.launch_year));
+      setYearsData([...theSet]);
+      setLoading(false);
+      setAllDetails(props.details);
+    }
+   // console.log('years', years);
+  }, [props.details]);
 
   const yearChanged = (year) => {
     setYear(year.toString());
     setEven('');
     setLaunchSuccess('');
-    const info = details.filter((x) => x.launch_year === year);
-    dispatch({ type: "FILTERED_DATA", payload: info });
+    const info = allDetails.filter((x) => x.launch_year === year);
+   // console.log('new data', info);
+    props.filteredData(info);
   }
 
   const setSuccessLanding = (val) => {
     setLaunchSuccess(val);
     setYear('');
     setEven('');
-    const info = details.filter((x) => {
+    const info = allDetails.filter((x) => {
       return (x.launch_success === val)
     });
-    dispatch({ type: "FILTERED_DATA", payload: info });
+    props.filteredData(info);
   }
 
   const filterEven = (val) => {
@@ -37,25 +47,19 @@ function Menu(props) {
     setYear('');
     setEven(val);
     if (val) {
-      const info = details.filter((x) => {
+      const info = allDetails.filter((x) => {
         return (x.flight_number % 2 === 0)
       });
-      dispatch({ type: "FILTERED_DATA", payload: info });
+      props.filteredData(info);
     }
     else {
-      const info = details.filter((x) => {
+      const info = allDetails.filter((x) => {
         return (x.flight_number % 2 !== 0)
       });
-      dispatch({ type: "FILTERED_DATA", payload: info });
+      props.filteredData(info);
     }
   }
 
-  useEffect(() => {
-    setLoading(true);
-    const info = details.filter((x) => x.launch_success === launchFilter);
-    dispatch({ type: "FILTERED_DATA", payload: info });
-    setLoading(false);
-  }, [launchFilter]);
 
   if (isLoading) {
     return (<h4 style={{ textAlign: 'center', margin: '25%' }}>Setting up menu... </h4>)
